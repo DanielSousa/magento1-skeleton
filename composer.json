@@ -1,0 +1,69 @@
+{
+  "name": "danielsousa/magento1-skeleton",
+  "description": "Magento 1 skeleton project",
+  "license": "GPL-2.0",
+  "type": "project",
+  "keywords": ["magento"],
+  "require": {
+    "php": ">=5.6",
+    "aoepeople/composer-installers": "0.0.1",
+    "tugagento/magento-mirror": "1.9.2.2"
+  },
+  "minimum-stability": "stable",
+  "repositories": [
+    {
+      "packagist": false
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "tugagento/magento-mirror",
+        "version": "1.9.2.2",
+        "type": "magento-source",
+        "dist": {
+          "url": "https://github.com/tugagento/magento-mirror/raw/master/magento-1.9.2.2.tar.gz",
+          "type": "tar"
+        }
+      }
+    },
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Daniel Sousa",
+      "email": "danielosousa@gmail.com"
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "htdocs": ["type:magento-source"],
+      ".modman/{$name}/": ["type:magento-module"]
+    }
+  },
+  "scripts": {
+    "pre-install-cmd": [
+      "mkdir -p .modman",
+      "echo 'htdocs/' > .modman/.basedir",
+      "mkdir -p dev/storage/etc"
+    ],
+    "post-install-cmd": [
+      "mv ./htdocs/var ./dev/storage/var",
+      "mv ./htdocs/media ./dev/storage/media"
+    ],
+    "post-update-cmd": [
+      "find ./htdocs -type l -exec unlink {} \\;",
+      "find .vendor -type d -name \".git\" -exec rm -rf {} \\;"
+    ],
+    "reset-symlinks": [
+      "ln -sf dev/storage storage",
+      "ln -sf ../storage/media htdocs/media",
+      "ln -sf ../storage/var htdocs/var",
+      "ln -sf ../storage/sitemap htdocs/sitemap",
+      "ln -sf ../../../storage/etc/local.xml htdocs/app/etc/local.xml",
+      "cd modman && cd .modman && modman deploy-all"
+    ]
+  }
+}

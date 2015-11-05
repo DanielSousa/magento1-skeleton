@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+
+#ignore all .git from all modules
+.modman/*/.git
+#ignore all .git from vendor
+vendor/**/.git
+
+.vagrant
+
+
+/htdocs/var
+/htdocs/sitemap
+/htdocs/media
