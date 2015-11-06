@@ -12,9 +12,6 @@
   "minimum-stability": "stable",
   "repositories": [
     {
-      "packagist": false
-    },
-    {
       "type": "package",
       "package": {
         "name": "tugagento/magento-mirror",
