@@ -3,7 +3,7 @@ class php () {
     # Install package
     package { "php5":
         ensure  => latest,
-        require => [ Class['server'], Package['apache2']],
+        require => [ Class['server'], Package['apache2'] ],
         notify  => Service['apache2'],
     }
 

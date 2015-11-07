@@ -34,11 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname                    = hostname
 
   # Synced folders
-  # config.vm.synced_folder "", "/vagrant"
-  config.vm.synced_folder "", "/vagrant", nfs: true,
-                                    mount_options: ["nolock", "async"],
-                                    bsd__nfs_options: ["alldirs","async","nolock"]
-  # config.vm.synced_folder "htdocs", "/var/www/magento"
+  config.vm.synced_folder "", "/vagrant"
+  config.vm.synced_folder "htdocs", "/var/www/magento"
 
   # "Provision" with hostmanager
   config.vm.provision :hostmanager

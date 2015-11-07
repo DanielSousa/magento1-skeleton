@@ -76,17 +76,6 @@ class apache::install ( $server_name, $document_root, $logs_dir ) {
         ensure  => directory,
         path    => $document_root,
     }
-
-    file { "var_folder":
-      ensure  => directory,
-      path    => '/var',
-    }
-
-    file { "var_www_folder":
-      ensure  => directory,
-      path    => '/var/www',
-    }
-
     file { "logs_dir":
         ensure  => directory,
         path    => $logs_dir,
