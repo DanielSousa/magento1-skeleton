@@ -60,7 +60,7 @@
       "ln -sf ../storage/var htdocs/var",
       "ln -sf ../storage/sitemap htdocs/sitemap",
       "ln -sf ../../../storage/etc/local.xml htdocs/app/etc/local.xml",
-      "cd modman && cd .modman && modman deploy-all"
+      "cd .modman && modman deploy-all"
     ]
   }
 }
