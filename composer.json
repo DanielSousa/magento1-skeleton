@@ -52,7 +52,7 @@
     ],
     "post-update-cmd": [
       "find ./htdocs -type l -exec unlink {} \\;",
-      "find .vendor -type d -name \".git\" -exec rm -rf {} \\;"
+      "find ./vendor -type d -name \".git\" -exec rm -rf {} \\;"
     ],
     "reset-symlinks": [
       "ln -sf dev/storage storage",
