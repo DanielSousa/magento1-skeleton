@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.vm.box_version = "1.0.2"
 
     # Customize VM
-    virtualbox.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "4", "--pae", "on", "--hwvirtex", "off", "--ioapic", "on"]
+    virtualbox.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "4", "--pae", "on", "--hwvirtex", "off", "--ioapic", "on"]
     virtualbox.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
     virtualbox.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
     virtualbox.name = hostname
@@ -36,9 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Synced folders
   #config.vm.synced_folder "", "/vagrant"
   #config.vm.synced_folder "htdocs", "/var/www/magento"
-  config.vm.synced_folder "", "/vagrant", nfs: true,
-                                  mount_options: ["nolock", "async"],
-                                  bsd__nfs_options: ["alldirs","async","nolock"]
+  config.vm.synced_folder "", "/vagrant", nfs: true, bsd__nfs_options: ["-maproot=www-data"]
 
   # "Provision" with hostmanager
   config.vm.provision :hostmanager
