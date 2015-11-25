@@ -21,7 +21,6 @@ class { "server":
 class { "apache":
     server_name     => "${server::hostname}",
     document_root   => "${document_root}",
-    logs_dir        => "${logs_dir}"
 }
 
 # MySQL
@@ -40,6 +39,7 @@ class { "php":
 
 # Includes
 include server
+include sudoers
 include apache
 include mysql
 include php

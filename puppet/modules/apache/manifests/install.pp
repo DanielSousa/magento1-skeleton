@@ -1,4 +1,4 @@
-class apache::install ( $server_name, $document_root, $logs_dir ) {
+class apache::install ( $server_name, $document_root) {
 
     Exec {
         path => [
@@ -75,10 +75,6 @@ class apache::install ( $server_name, $document_root, $logs_dir ) {
     file { "document_root":
         ensure  => directory,
         path    => $document_root,
-    }
-    file { "logs_dir":
-        ensure  => directory,
-        path    => $logs_dir,
     }
 
     # Mods

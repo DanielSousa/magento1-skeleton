@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 hostname = "tugagento.dev"
-virtualbox_ip = "10.0.2.100";
+virtualbox_ip = "10.0.1.50";
 
 VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -34,9 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname                    = hostname
 
   # Synced folders
-  #config.vm.synced_folder "", "/vagrant"
-  #config.vm.synced_folder "htdocs", "/var/www/magento"
-  config.vm.synced_folder "", "/vagrant", nfs: true, bsd__nfs_options: ["-maproot=www-data"]
+  config.vm.synced_folder "", "/vagrant", type:"nfs", mount_options: ["nolock", "vers=3", "udp"], id: "nfs-sync"
 
   # "Provision" with hostmanager
   config.vm.provision :hostmanager
@@ -46,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path   = "puppet/manifests"
     puppet.module_path      = "puppet/modules"
     puppet.manifest_file    = "init.pp"
-    puppet.options = ['--verbose']
+    #puppet.options = ['--verbose']
 
     # Factors
     puppet.facter = {
@@ -58,7 +56,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "db_name"           => "magento",
         "db_name_tests"     => "magento_tests",
         "document_root"     => "/vagrant/htdocs",
-        "logs_dir"          => "/var/www/logs",
     }
   end
 
