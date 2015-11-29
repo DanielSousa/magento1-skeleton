@@ -91,7 +91,7 @@ If you want to start MailCatcher, simply run this command (with vagrant user) : 
 
 Then go to : http://definedhostname:1080
 
-If you need to stop the mailcatcher daemon : Clic on "Quit" on the top right corner of the MailCatcher Web UI.
+If you need to stop the mailcatcher daemon : Click on "Quit" on the top right corner of the MailCatcher Web UI.
 
 
 ### Credits
