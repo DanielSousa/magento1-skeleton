@@ -7,7 +7,7 @@
   "require": {
     "php": ">=5.3",
     "aoepeople/composer-installers": "0.0.1",
-    "tugagento/magento-mirror": "1.9.2.2"
+    "tugagento/magento-mirror": "1.9.2.4"
   },
   "minimum-stability": "stable",
   "repositories": [
@@ -15,17 +15,17 @@
       "type": "package",
       "package": {
         "name": "tugagento/magento-mirror",
-        "version": "1.9.2.2",
+        "version": "1.9.2.4",
         "type": "magento-source",
         "dist": {
-          "url": "https://github.com/tugagento/magento-mirror/raw/master/magento-1.9.2.2.tar.gz",
+          "url": "https://github.com/tugagento/magento-mirror/raw/master/magento-1.9.2.4.tar.gz",
           "type": "tar"
         }
       }
     },
     {
       "type": "composer",
-      "url": "http://packages.firegento.com"
+      "url": "https://packages.firegento.com"
     }
   ],
   "authors": [
